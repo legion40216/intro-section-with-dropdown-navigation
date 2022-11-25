@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+ 
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { text-align: center; }
+    .attribution a { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo-navbar-links">
+      
+    <div class="logo">
+      <a href="">
+        <img src="images/logo.svg" alt="snap Company logo">
+      </a>
+    </div>
+    <div class="navbar-container">
+    <div role="presentation" class="navbar-sidebar__backdrop" ></div>
+    <div class="navsidebar">
+    <div class="navsidebar-close">
+      <button><img src="images/icon-close-menu.svg" alt="mobile close navbar "></button>
+    </div>  
+    <ul class="navbar-links nav-groups" aria-label="primary">
+      <li class="dropdown-link dropdown-link_features " aria-expanded="false">
+        <div class="dropdown-link_layout"> 
+          <span>Features</span>
+          <span class="arrow-features">
+            <img src="images/icon-arrow-down.svg" alt="dropdown arrow">
+          </span>
+        </div>
+       
+        <ul class="dropdown-list dropdown-list_features">
+          <li><img src="images/icon-todo.svg" alt="todo" > <span>todo list</span> </li>
+          <li><img src="images/icon-calendar.svg" alt="calendar" > <span>calander</span> </li>
+          <li><img src="images/icon-reminders.svg"alt="reminders" ><span>reminders</span> </li>
+          <li><img src="images/icon-planning.svg" alt="planning"  ><span>planning</span> </li>
+        </ul>
+      </li>
+      <li class="dropdown-link dropdown-link_company" aria-expanded="false">
+        <div class="dropdown-link_layout"> 
+        <span>Company</span>
+        <span class="arrow-company">
+          <img src="images/icon-arrow-down.svg" alt="dropdown arrow">
+        </span>
+      </div>
+        <ul class="dropdown-list dropdown-list_company">
+          <li><span>history</span></li>
+          <li><span>our team</span></li>
+          <li><span>blog</span></li>
+        </ul>
+      </li>
+      <li>
+      <span><a href="">Careers</a></span>  
+      </li>
+      <li>
+        <span><a href="">About</a></span>
+      </li>
+    </ul>
+  
+    <ul class="nav-groups nav-right-group">
+      <li>
+        <button >
+          Login
+        </button>
+       
+      </li>
+      <li>
+        <button data-type="secondary">
+          Register
+        </button>
+        
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
+  <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded=true>
+    <img src="images/icon-menu.svg" alt="mobile toggle">
+    <span class="visually-hidden">menu</span>
+  </button>
+  </nav>
+</header>
+
+<main >
+  <div class=" landing-clients-para ">
+
+<h1 class="[ fs-primary-heading ]">
+  Make remote work
+</h1>
+  
+<p class="[ line-height-400 ]">
+  Get your team in sync, no matter your location. Streamline processes, 
+  create team rituals, and watch productivity soar.
+</p>
+
+<div>
+  <button data-type="primary">
+    Learn more
+  </button>
+</div>
+
+<div>
+ <ul class="landing-clients-sponsers-images">
+  <li>
+    <img src="images/client-databiz.svg" alt="databiz">
+  </li>
+  <li>
+    <img src="images/client-audiophile.svg" alt="audiophile">
+  </li>
+  <li>
+    <img src="images/client-meet.svg" alt="meet">
+  </li>
+  <li>
+    <img src="images/client-maker.svg" alt="maker">
+  </li>
+ </ul>
+</div>
+</div>
+
+<div class="landing-client-hero">
+  <picture>
+    <source media="(min-width: 50em )" srcset="images/image-hero-desktop.png">
+    <source media="(max-width: 50em)" srcset="images/image-hero-mobile.png">
+    <img src="" alt="image-hero">
+  </picture>
+</div>
+
+  
+
+</main>
+<footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Suleman Lohar</a>.
+  </div>
+</footer>
+
+<script>
+  const dropdownLink =document.querySelectorAll(".dropdown-link")
+  const dropDown = document.querySelector(".dropdown-list_features")
+  const dropdownLinkFeatures = document.querySelector(".dropdown-link_features")
+
+   
+ 
+  const dropdownLinkCompany = document.querySelector(".dropdown-link_company")
+  const dropDownCompany = document.querySelector(".dropdown-list_company")
+
+  const arrowCompany = document.querySelector(".arrow-company")
+  const arrowFeatures = document.querySelector(".arrow-features")
+
+  const mobileNavToggle = document.querySelector(".mobile-nav-toggle")
+  const navSidebar = document.querySelector(".navsidebar")
+  const navbarSidebarBackdrop = document.querySelector(".navbar-sidebar__backdrop")
+  const mobileNavToggleClose = document.querySelector(".navsidebar-close > button")
+
+  dropdownLink.forEach(element=>{
+    element.addEventListener("click", ()=>{
+      if(element===dropdownLink[0])
+      {
+      dropDown.toggleAttribute('data-visiable')
+    if(dropDown.hasAttribute('data-visiable'))
+    {
+      dropDown.classList.add("dropdown-open")
+      dropdownLinkFeatures.setAttribute("aria-expanded",true)
+      arrowFeatures.classList.add("rotate-up")
+    }
+    else{
+      dropDown.classList.remove("dropdown-open")
+      dropdownLinkFeatures.setAttribute("aria-expanded",false)
+      arrowFeatures.classList.remove("rotate-up")
+    }
+      }
+      else{
+    dropDownCompany.toggleAttribute('data-visiable')
+    if(dropDownCompany.hasAttribute('data-visiable'))
+    {
+      dropDownCompany.classList.add("dropdown-open")
+      dropdownLinkCompany.setAttribute("aria-expanded",true)
+      arrowCompany.classList.add("rotate-up")
+    }
+    else{
+      dropDownCompany.classList.remove("dropdown-open")
+      dropdownLinkCompany.setAttribute("aria-expanded",false)
+      arrowCompany.classList.remove("rotate-up")
+    }
+      }
+  
+  })
+  })
+ 
+  mobileNavToggle.addEventListener("click", ()=>{
+    navSidebar.classList.add("nav-sidebar-open")
+    navbarSidebarBackdrop.classList.add("nav-sidebar-open")
+    
+  })
+
+  mobileNavToggleClose.addEventListener("click", ()=>{
+    navSidebar.classList.remove("nav-sidebar-open")
+    navbarSidebarBackdrop.classList.remove("nav-sidebar-open")
+ 
+  })
+
+</script>
+
+</body>
+</html>  
